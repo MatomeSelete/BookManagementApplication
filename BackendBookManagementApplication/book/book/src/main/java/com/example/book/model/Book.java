@@ -1,9 +1,7 @@
-//package com.example.book.BookApplication;
+package com.example.book.model;
 
 // import javax.persistence.*;
 import jakarta.persistence.*; // for Spring Boot 3
-
-import java.awt.print.Book;
 
 @Entity
 public class Book {
@@ -14,14 +12,23 @@ public class Book {
     @Column(name = "title", nullable = false)
     private String title;
 
+    @Column(name = "author")
+    private String author;
+
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id", nullable = false, updatable = false)
-    private Book book;
+    public Book() {
+    }
 
-    public Tutorial() {
+    public Book(Long id) {
+        this.id = id;
+    }
+
+    public Book(String title, String author, String description) {
+        this.title = title;
+        this.author = author;
+        this.description = description;
     }
 
     public Long getId() {
@@ -36,6 +43,14 @@ public class Book {
         this.title = title;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = this.author;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -46,7 +61,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book [id=" + id + ", title=" + title + ", description=" + description + ", author=" + author + "]";
+        return "User [id=" + id + ", title=" + title + ", author=" + author + ", description=" + description +  "]";
     }
 
 }
