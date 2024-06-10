@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export default function Home() {
   const [title, setTitle] = useState('');
@@ -54,7 +56,6 @@ export default function Home() {
 
   return (
     <div className='container home'
-
       style={
         {
           width: "100%",
@@ -81,6 +82,12 @@ export default function Home() {
               onClick={() => handleViewClick(item.id)}>
               View
             </button>
+            &nbsp;
+            <button
+              className="btn btn-danger"
+              onClick={() => deletePost(item.id)}>
+              Delete
+            </button>
           </div>
         </div>
       ))}
@@ -99,7 +106,7 @@ export default function Home() {
                 <p>{selectedPost.body}</p>
 
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Delete</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save</button>
                 </div>
               </>
             )}
@@ -107,7 +114,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-
-
   )
 }
